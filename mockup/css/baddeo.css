@@ -116,45 +116,47 @@ a:hover {
   float: left;
   position: relative;
   overflow: hidden;
-  			/* div.content
-  			{
-  				@extend .animated-fast;
-  
-  				position: absolute;
-  				bottom: -200%;
-  				// bottom: 0;
-  
-  				color: $white;
-  				// padding: $unit;
-  				width: 100%;
-  
-  				div
-  				{
-  					margin-bottom: $unit;
-  
-  					&:last-child
-  					{
-  						margin-bottom: 0;
-  					}
-  				}
-  			}
-  
-  			&:hover
-  			{
-  				// img
-  				// {
-  				// 	@include cross-browser-grayscale(1, 1.8);
-  
-  				// 	transform: scale(1.05);
-  				// 	opacity: 0.3;
-  				// }
-  
+  			/* 
   				div.content
   				{
-  					bottom: 0;
-  					// opacity: 1;
+  					@extend .animated-fast;
+  
+  					position: absolute;
+  					bottom: -200%;
+  					// bottom: 0;
+  
+  					color: $white;
+  					// padding: $unit;
+  					width: 100%;
+  
+  					div
+  					{
+  						margin-bottom: $unit;
+  
+  						&:last-child
+  						{
+  							margin-bottom: 0;
+  						}
+  					}
   				}
-  			} */
+  
+  				&:hover
+  				{
+  					// img
+  					// {
+  					// 	@include cross-browser-grayscale(1, 1.8);
+  
+  					// 	transform: scale(1.05);
+  					// 	opacity: 0.3;
+  					// }
+  
+  					div.content
+  					{
+  						bottom: 0;
+  						// opacity: 1;
+  					}
+  				} 
+  			*/
 }
 /* line 24, ../scss/_grid.scss */
 .grid li.double-square {
@@ -175,11 +177,47 @@ a:hover {
   float: left;
   width: 50%;
 }
-/* line 47, ../scss/_grid.scss */
-.grid li.double-portrait {
-  height: 66.66666%;
+/* line 46, ../scss/_grid.scss */
+.grid li.double-landscape .content:after {
+  content: ' ';
+  border: 12px solid transparent;
+  border-left: 18px solid #fcf7e7;
+  left: 100%;
+  top: 46%;
+  width: 0;
+  height: 0;
+  position: absolute;
+  z-index: 1000;
 }
-/* line 62, ../scss/_grid.scss */
+/* line 65, ../scss/_grid.scss */
+.grid li.double-portrait .content {
+  position: relative;
+  height: 0;
+  padding: 0;
+  padding-bottom: 100%;
+  width: 100%;
+}
+/* line 73, ../scss/_grid.scss */
+.grid li.double-portrait .content .text {
+  padding: 1.25em 1em;
+}
+/* line 78, ../scss/_grid.scss */
+.grid li.double-portrait .content .date-time {
+  left: 2em;
+}
+/* line 84, ../scss/_grid.scss */
+.grid li.double-portrait .content:before {
+  content: ' ';
+  border: 12px solid transparent;
+  border-bottom: 18px solid #fcf7e7;
+  bottom: 100%;
+  left: 46%;
+  width: 0;
+  height: 0;
+  position: absolute;
+  z-index: 1000;
+}
+/* line 109, ../scss/_grid.scss */
 .grid li img {
   width: 100%;
   vertical-align: text-bottom;
@@ -188,13 +226,13 @@ a:hover {
 }
 
 @media (max-width: 640px) {
-  /* line 116, ../scss/_grid.scss */
+  /* line 165, ../scss/_grid.scss */
   .grid li {
     width: 50%;
   }
 }
 @media (max-width: 320px) {
-  /* line 124, ../scss/_grid.scss */
+  /* line 173, ../scss/_grid.scss */
   .grid li {
     width: 100%;
   }
@@ -542,20 +580,8 @@ body {
 .tweet {
   color: #55acee;
 }
-/* line 162, ../scss/baddeo.scss */
-.tweet .content:after {
-  content: ' ';
-  border: 12px solid transparent;
-  border-left: 18px solid #fcf7e7;
-  left: 100%;
-  display: block;
-  width: 0;
-  height: 0;
-  position: absolute;
-  z-index: 1000;
-}
 
-/* line 183, ../scss/baddeo.scss */
+/* line 165, ../scss/baddeo.scss */
 .about figure:after,
 .article figure:after,
 .journal figure:after {
@@ -567,14 +593,14 @@ body {
   left: 0;
 }
 
-/* line 204, ../scss/baddeo.scss */
+/* line 186, ../scss/baddeo.scss */
 .content {
   position: absolute;
   bottom: 0 !important;
   top: 0 !important;
   padding: 1.25em 1em;
 }
-/* line 216, ../scss/baddeo.scss */
+/* line 198, ../scss/baddeo.scss */
 .content .date-time {
   position: absolute;
   bottom: 1.25em;

@@ -153,25 +153,7 @@
 		// background-color: $twitter-blue;
 		// figure:after { background: $twitter-blue; }
 
-		color: $twitter-blue;
-
-		.content
-		{
-			// arrow pointing right
-			&:after
-			{
-				content: ' ';
-				border: $unit solid transparent;
-				border-left: $unit*1.5 solid $bg-color;
-				left: 100%;
-				// top: 30%;
-				display: block;
-				width: 0;
-				height: 0;
-				position: absolute;
-				z-index: 1000;
-			}
-		}	
+		color: $twitter-blue;	
 	} 
 
 	.about,

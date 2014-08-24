@@ -18,12 +18,12 @@
 		{
 			/* 3 columns */
 			width: 33.333333%; 
-			height: 33.333333%;
+			height: 33.333333%; // do we need this?
 
 			&.double-square
 			{
 				width: 66.66666%;
-				height: 66.66666%;
+				height: 66.66666%; // do we need this?
 			}
 
 			&.double-landscape
@@ -40,12 +40,59 @@
 				{
 					float: left;
 					width: 50%;
+
+					// arrow pointing right
+					&:after
+					{
+						content: ' ';
+						border: $unit solid transparent;
+						border-left: $unit*1.5 solid $bg-color;
+						left: 100%;
+						top: 46%;
+						width: 0;
+						height: 0;
+						position: absolute;
+						z-index: 1000;
+					}
 				}
 			}
 
 			&.double-portrait
 			{
-				height: 66.66666%;
+				// height: 66.66666%;
+
+				.content
+				{
+					position: relative;
+					height: 0;
+					padding: 0;
+					padding-bottom: 100%;
+					width: 100%;
+
+					.text
+					{
+						padding: 1.25em 1em;
+					}
+
+					.date-time
+					{
+						left: 2em;
+					}
+					
+					// arrow pointing up
+					&:before
+					{
+						content: ' ';
+						border: $unit solid transparent;
+						border-bottom: $unit*1.5 solid $bg-color;
+						bottom: 100%;
+						left: 46%;
+						width: 0;
+						height: 0;
+						position: absolute;
+						z-index: 1000;
+					}
+				}
 			}
 
 			// min-height: 320px;
@@ -68,45 +115,47 @@
 				vertical-align: middle;
 			}
 
-			/* div.content
-			{
-				@extend .animated-fast;
-
-				position: absolute;
-				bottom: -200%;
-				// bottom: 0;
-
-				color: $white;
-				// padding: $unit;
-				width: 100%;
-
-				div
-				{
-					margin-bottom: $unit;
-
-					&:last-child
-					{
-						margin-bottom: 0;
-					}
-				}
-			}
-
-			&:hover
-			{
-				// img
-				// {
-				// 	@include cross-browser-grayscale(1, 1.8);
-
-				// 	transform: scale(1.05);
-				// 	opacity: 0.3;
-				// }
-
+			/* 
 				div.content
 				{
-					bottom: 0;
-					// opacity: 1;
+					@extend .animated-fast;
+
+					position: absolute;
+					bottom: -200%;
+					// bottom: 0;
+
+					color: $white;
+					// padding: $unit;
+					width: 100%;
+
+					div
+					{
+						margin-bottom: $unit;
+
+						&:last-child
+						{
+							margin-bottom: 0;
+						}
+					}
 				}
-			} */
+
+				&:hover
+				{
+					// img
+					// {
+					// 	@include cross-browser-grayscale(1, 1.8);
+
+					// 	transform: scale(1.05);
+					// 	opacity: 0.3;
+					// }
+
+					div.content
+					{
+						bottom: 0;
+						// opacity: 1;
+					}
+				} 
+			*/
 		}
 	}
 
