@@ -1,0 +1,85 @@
+/* COLOUR PHOTO FILTERS */
+
+@import "compass";
+
+$yellow: 	#FFE600;
+$blue:		#00B0B7;
+$red: 		#EF413D;
+$grey:		#2A4D50;
+
+@mixin background-opacity($color, $opacity: 0.3) 
+{
+	background: rgba($color, $opacity);
+}
+
+@mixin cross-browser-grayscale($grayscale: 0.5, $contrast: 1.5) 
+{
+	/* Firefox 4+ */
+	filter: url('greyscale.svg#greyscale'); 
+	// filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); 
+    /* IE6-9 */
+    filter: gray; 
+    /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+    @include grayscale-contrast($grayscale, $contrast);
+    // -webkit-filter: grayscale(1) contrast(1.2); 
+}
+
+@mixin grayscale($ratio: 0.5) 
+{
+	-webkit-filter: grayscale($ratio);
+	   -moz-filter: grayscale($ratio);
+		-ms-filter: grayscale($ratio);
+		 -o-filter: grayscale($ratio);
+			filter: grayscale($ratio);
+}
+
+@mixin grayscale-contrast($grayscale: 0.5, $contrast: 1.5) 
+{
+	-webkit-filter: grayscale($grayscale) contrast($contrast);
+	   -moz-filter: grayscale($grayscale) contrast($contrast);
+		-ms-filter: grayscale($grayscale) contrast($contrast);
+		 -o-filter: grayscale($grayscale) contrast($contrast);
+			filter: grayscale($grayscale) contrast($contrast);
+}
+
+/* .filter
+{
+	position: relative;
+
+	img
+	{
+		@include cross-browser-grayscale();
+		// max-width: 100%;
+		// width: auto;
+		// @include grayscale-contrast(1, 1.6);
+	}
+
+	&:after
+	{
+		content: ' ';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	&.blue:after
+	{
+		@include background-opacity($blue, 0.6);
+	}
+
+	&.yellow:after
+	{
+		@include background-opacity($yellow, 0.6);
+	}
+
+	&.red:after
+	{
+		@include background-opacity($red, 0.6);
+	}
+} */
+
+

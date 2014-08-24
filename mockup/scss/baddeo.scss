@@ -1,0 +1,220 @@
+@import "config";
+@import "reset";
+@import "font-awesome";
+@import "seo";
+@import "grid";
+@import "nav";
+@import "typography";
+@import "animation";
+// @import "filters";
+
+// TEMP 
+
+	body
+	{
+		// background-image: url('http://baddeo.com/stylesheets/images/body_background.png');
+		background-color: $bg-color;
+	}
+	
+	// hide the instagram feed
+	#instafeed
+	{
+		display: none;
+	}
+
+/* CONTENT */
+
+	.video
+	{
+		a
+		{
+			width: 100%;
+			height: 100%;
+			display: block;
+			border: none;
+		}
+
+		&:after
+		{
+			@extend .fa;
+			@extend .fa-5x;
+
+			content: '\f04b' !important;
+
+			width: 100%;
+			text-align: center;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			padding-top: 43%;
+			color: $icons-color;
+
+			pointer-events: none;
+		}
+	}
+
+	.about
+	{
+		background: $purple;
+		figure:after 
+		{ 
+			background: $purple;
+			opacity: 0.8; 
+		}
+
+		img
+		{
+			@include cross-browser-grayscale(1, 1.8);
+		}	
+
+		&:hover
+		{
+			img
+			{
+				@include cross-browser-grayscale(0, 1);
+			}
+
+			figure:after
+			{
+				opacity: 0;
+			}
+		}
+	} 
+
+	.article
+	{
+		background-color: $green;
+		figure:after 
+		{ 
+			background: $green; 
+			opacity: 0.8;
+		}
+
+		img
+		{
+			@include cross-browser-grayscale(1, 1.8);
+		}
+
+		.link
+		{
+			position: absolute;
+			bottom: 1.25em;
+			left: 1em;
+			right: 1em;
+			a
+			{
+				background: $green;
+				padding: 0.5em 1em;
+				color: $white;
+				border: none;
+				border-radius: 3em;
+				width: 100%;
+				display: block;
+				text-align: center;
+			}	
+		}
+
+		&:hover
+		{
+			figure:after, h3, .text
+			{
+				opacity: 0;
+			}
+
+			img
+			{
+				@include cross-browser-grayscale(0, 1);
+			}
+		}
+	} 
+
+	.journal
+	{
+		background-color: $orange;
+		color: $white;
+
+		figure:after 
+		{
+			opacity: 0.6; 
+			background: $orange; 
+		}
+
+		img
+		{
+			@include cross-browser-grayscale(1, 1.8);
+
+			// transform: scale(1.05);
+			opacity: 0.3;
+		}
+	} 
+
+	.tweet
+	{
+		// background-color: $twitter-blue;
+		// figure:after { background: $twitter-blue; }
+
+		color: $twitter-blue;
+
+		.content
+		{
+			// arrow pointing right
+			&:after
+			{
+				content: ' ';
+				border: $unit solid transparent;
+				border-left: $unit*1.5 solid $bg-color;
+				left: 100%;
+				// top: 30%;
+				display: block;
+				width: 0;
+				height: 0;
+				position: absolute;
+				z-index: 1000;
+			}
+		}	
+	} 
+
+	.about,
+	.article,
+	.journal
+	// .tweet
+	{
+		figure:after
+		{
+			@extend .animated-fast;
+
+			// opacity: 0;
+			content: ' ';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			// width: 100%;
+			// height: 100%;
+		}
+
+		&:hover figure:after
+		{
+			// opacity: 0.6;
+		}
+	}
+
+	.content
+	{
+		position: absolute;
+		bottom: 0 !important;
+		top: 0 !important;
+		padding: 1.25em 1em;
+
+		.text
+		{
+			// padding: 1.25em 1em;
+		}	
+
+		.date-time
+		{
+			position: absolute;
+			bottom: 1.25em;
+		}
+	}
