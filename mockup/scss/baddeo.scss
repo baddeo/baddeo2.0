@@ -231,16 +231,5 @@
 
 	.tweet
 	{
-		// background-color: $twitter-blue;
-		// figure:after { background: $twitter-blue; }
-
-		color: $twitter-blue;
-
-		.content
-		{
-			&:after
-			{
-				// border-top: $unit*1.5 solid $bg-color !important;
-			}
-		}	
+		color: $twitter-blue;	
 	}

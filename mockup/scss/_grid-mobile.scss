@@ -10,7 +10,7 @@
 
 		list-style: none;
 
-		li
+		> * // li, article
 		{
 			position: relative;
 			overflow: hidden;
@@ -140,7 +140,7 @@
 	{
 		.grid
 		{
-			li
+			> * // li, article
 			{
 				.content,
 				figure
@@ -222,7 +222,7 @@
 			// max-width: 1024px;
 			max-width: 1023px; // cause it's divisible by 3 (341)
 
-			li
+			> * // li, article
 			{
 				width: 33.333333%; 
 				float: left;
