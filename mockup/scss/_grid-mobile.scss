@@ -1,0 +1,278 @@
+// @import "filters";
+
+/* GRID */
+
+	.grid
+	{
+		padding: 0;
+		margin: 0 auto;
+		border: none;
+
+		list-style: none;
+
+		li
+		{
+			position: relative;
+			overflow: hidden;
+
+			.content
+			{
+				z-index: 1;
+				padding: 1.25em 1em;
+				position: relative;
+
+				.text
+				{
+					// padding: 1.25em 1em;
+				}	
+
+				.date-time
+				{
+					margin-top: 1.25em;
+
+					i.fa
+					{
+						margin-right: 0.5em;
+					}
+				}
+
+				.cta
+				{
+					margin-top: 1.25em;
+
+					a
+					{
+						@extend .animated-fast;
+
+						background: $bg-color;
+						padding: 0.5em 1em;
+						border: none;
+						border-radius: 3em;
+						width: 100%;
+						display: block;
+						text-align: center;
+
+						&:hover
+						{
+							// background: $green;
+						}
+					}
+				}
+
+				/* arrow pointing down */
+				&:after
+				{
+					content: ' ';
+					top: 100%;
+					left: 45%;
+					width: 0;
+					height: 0;
+					position: absolute;
+					z-index: 2;
+					border-width: $unit*1.5;
+					border-style: solid;
+					border-color: transparent;
+					border-top-width: $unit*2;
+					border-top-color: $bg-color; // default colour
+				}
+			}
+
+			figure
+			{
+				overflow: hidden;
+				z-index: 0;
+
+				img
+				{
+					@extend .animated-fast;
+
+					width: 100%;
+					// vertical-align: text-bottom;
+					// vertical-align: text-top;
+					vertical-align: middle;
+				}
+			}
+
+			&.double-landscape,
+			&.double-portrait
+			{
+
+			}
+
+			&.filter // coloured filter is applied on every screen size, no matter what
+			{
+				figure
+				{
+					&:after
+					{
+						@extend .animated-fast;
+						content: ' ';
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						right: 0;
+						left: 0;
+					}
+				}
+			}
+		}
+
+		// TODO double-portrait and double-landscape
+		// will have text on top and arrow pointing down
+		// no square
+	}
+
+	/* 
+		2 breakpoints
+		768 and 960
+		768 is mainly font-sizes?
+
+		images: 1536x1536 (768@2x)
+		responsive images?
+			could have img-large 1536
+			and img-small (768 or so)
+	*/
+		
+	@media (min-width: 768px)
+	{
+		.grid
+		{
+			li
+			{
+				/* 3 columns */
+				width: 33.333333%; 
+				height: 33.333333%; // do we need this?
+
+				float: left;
+
+				.content
+				{
+					position: absolute;
+					bottom: 0 !important; // why important?
+					top: 0 !important; // why important?
+
+					.date-time
+					{
+						position: absolute;
+						bottom: 1.25em;
+					}
+
+					.cta
+					{
+						position: absolute;
+						bottom: 1.25em;
+						left: 1em;
+						right: 1em;	
+					}
+				}
+
+				figure
+				{
+					&:after
+					{
+						@extend .animated-fast;
+						content: ' ';
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						right: 0;
+						left: 0;
+					}
+				}
+
+				&.double-square
+				{
+					width: 66.66666%;
+					height: 66.66666%; // do we need this?
+				}
+
+				&.double-landscape
+				{
+					width: 66.66666%;
+					
+					figure 
+					{ 
+						width: 50%; 
+						float: right;
+					}
+
+					.content
+					{
+						float: left;
+						width: 50%;
+
+						// arrow pointing right
+						&:after
+						{
+							content: ' ';
+							border: $unit solid transparent;
+							border-left: $unit*1.5 solid $bg-color;
+							left: 100%;
+							top: 46%;
+							width: 0;
+							height: 0;
+							position: absolute;
+							z-index: 1000;
+						}
+					}
+				}
+
+				&.double-portrait
+				{
+					// height: 66.66666%;
+
+					.content
+					{
+						position: relative;
+						height: 0;
+						padding: 0;
+						padding-bottom: 100%;
+						width: 100%;
+
+						.text
+						{
+							padding: 1.25em 1em;
+						}
+
+						.date-time
+						{
+							left: 2em;
+						}
+						
+						// arrow pointing up
+						&:before
+						{
+							content: ' ';
+							border: $unit solid transparent;
+							border-bottom: $unit*1.5 solid $bg-color;
+							bottom: 100%;
+							left: 46%;
+							width: 0;
+							height: 0;
+							position: absolute;
+							z-index: 1000;
+						}
+					}
+				}
+
+				&:hover
+				{
+					img
+					{
+						// @include cross-browser-grayscale(1, 1.8);
+
+						transform: scale(1.05);
+						// opacity: 0.3;
+					}
+				}
+			}
+		}
+	}
+
+	@media (min-width: 960px)
+	{
+		.grid
+		{	
+			max-width: 960px;
+		}	
+	}

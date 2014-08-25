@@ -2,11 +2,13 @@
 @import "reset";
 @import "font-awesome";
 @import "seo";
-@import "grid";
+@import "filters";
+// @import "grid"; // old grid
+@import "grid-mobile"; // mobile first
 @import "nav";
 @import "typography";
 @import "animation";
-// @import "filters";
+
 
 // TEMP 
 
@@ -14,16 +16,29 @@
 	{
 		// background-image: url('http://baddeo.com/stylesheets/images/body_background.png');
 		background-color: $bg-color;
-	}
-	
-	// hide the instagram feed
-	#instafeed
-	{
-		display: none;
+		color: $dark-blue;
 	}
 
 /* CONTENT */
+	
+	/* 
+		four content types:
+		* about
+		* article
+		* journal
+		* tweet
 
+		each one can have a figure
+		<figure>
+			<img>
+		</figure>
+		
+		and a .content
+		<div class="content">
+			<div class="text"><div>
+			<div class="date-time"><div>
+		</div>		
+	*/
 	.video
 	{
 		a
@@ -46,7 +61,7 @@
 			position: absolute;
 			top: 0;
 			bottom: 0;
-			padding-top: 43%;
+			padding-top: 42%;
 			color: $icons-color;
 
 			pointer-events: none;
@@ -56,16 +71,25 @@
 	.about
 	{
 		background: $purple;
-		figure:after 
-		{ 
-			background: $purple;
-			opacity: 0.8; 
+
+		.content
+		{
+
 		}
 
-		img
-		{
-			@include cross-browser-grayscale(1, 1.8);
-		}	
+		figure 
+		{ 
+			img
+			{
+				@include cross-browser-grayscale(1, 1.8);
+			}
+
+			&:after
+			{
+				background: $purple;
+				opacity: 0.8;
+			}	 
+		}
 
 		&:hover
 		{
@@ -84,46 +108,50 @@
 	.article
 	{
 		background-color: $green;
-		figure:after 
-		{ 
-			background: $green; 
-			opacity: 0.8;
-		}
 
-		img
+		.content
 		{
-			@include cross-browser-grayscale(1, 1.8);
-		}
-
-		.link
-		{
-			position: absolute;
-			bottom: 1.25em;
-			left: 1em;
-			right: 1em;
-			a
+			.cta
 			{
-				background: $green;
-				padding: 0.5em 1em;
-				color: $white;
-				border: none;
-				border-radius: 3em;
-				width: 100%;
-				display: block;
-				text-align: center;
-			}	
+				a:hover
+				{
+					// background: $green;
+				}
+			}
+
+			&:after
+			{
+				// border-top: $unit*1.5 solid $green !important;
+				border-top-color: $green !important;
+			}
+		}
+
+		figure
+		{ 
+			img
+			{
+				// @include cross-browser-grayscale(1, 1.8);
+				// opacity: 0.6;
+			}
+
+			&:after 
+			{
+				// background: $green; 
+				// opacity: 0.8;
+			}
 		}
 
 		&:hover
 		{
-			figure:after, h3, .text
+			/* figure:after, h3, .text
 			{
 				opacity: 0;
-			}
+			} */
 
 			img
 			{
 				@include cross-browser-grayscale(0, 1);
+				opacity: 1;
 			}
 		}
 	} 
@@ -132,20 +160,30 @@
 	{
 		background-color: $orange;
 		color: $white;
-
-		figure:after 
+		
+		.content
 		{
-			opacity: 0.6; 
-			background: $orange; 
+			&:after
+			{
+				// border-top: $unit*1.5 solid $orange !important;
+				border-top-color: $orange !important;
+			}
 		}
 
-		img
+		figure
 		{
-			@include cross-browser-grayscale(1, 1.8);
+			img
+			{
+				@include cross-browser-grayscale(1, 1.8);
+				opacity: 0.3;
+			}
 
-			// transform: scale(1.05);
-			opacity: 0.3;
-		}
+			&:after 
+			{
+				opacity: 0.6; 
+				background: $orange; 
+			}
+		}	
 	} 
 
 	.tweet
@@ -153,50 +191,13 @@
 		// background-color: $twitter-blue;
 		// figure:after { background: $twitter-blue; }
 
-		color: $twitter-blue;	
-	} 
+		color: $twitter-blue;
 
-	.about,
-	.article,
-	.journal
-	// .tweet
-	{
-		figure:after
+		.content
 		{
-			@extend .animated-fast;
-
-			// opacity: 0;
-			content: ' ';
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			right: 0;
-			left: 0;
-			// width: 100%;
-			// height: 100%;
-		}
-
-		&:hover figure:after
-		{
-			// opacity: 0.6;
-		}
-	}
-
-	.content
-	{
-		position: absolute;
-		bottom: 0 !important;
-		top: 0 !important;
-		padding: 1.25em 1em;
-
-		.text
-		{
-			// padding: 1.25em 1em;
+			&:after
+			{
+				// border-top: $unit*1.5 solid $bg-color !important;
+			}
 		}	
-
-		.date-time
-		{
-			position: absolute;
-			bottom: 1.25em;
-		}
 	}
