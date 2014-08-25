@@ -200,7 +200,7 @@ a:hover {
 			could have img-large 1536
 			and img-small (768 or so)
 	*/
-@media (min-width: 512px) {
+@media (min-width: 512px) and (max-width: 1023px) {
   /* line 147, ../scss/_grid-mobile.scss */
   .grid li .content,
   .grid li figure {
@@ -210,8 +210,8 @@ a:hover {
   /* line 153, ../scss/_grid-mobile.scss */
   .grid li .content {
     font-size: 0.75em;
-    font-size: 3vmin;
-    line-height: 4.5vmin;
+    font-size: 3vw;
+    line-height: 4.5vw;
     position: static;
     /* arrow pointing right */
     /* &:after
@@ -230,48 +230,47 @@ a:hover {
     	border-left-color: $bg-color; // default colour
     } */
   }
-  /* line 162, ../scss/_grid-mobile.scss */
+  /* line 164, ../scss/_grid-mobile.scss */
   .grid li .content .date-time,
   .grid li .content .cta {
     position: absolute;
     bottom: 1.25em;
   }
-  /* line 199, ../scss/_grid-mobile.scss */
+  /* line 201, ../scss/_grid-mobile.scss */
   .grid li.double-square .content,
   .grid li.double-square figure {
     width: 100%;
     float: none;
   }
 }
-@media (min-width: 800px) {
-  /* line 219, ../scss/_grid-mobile.scss */
+@media (min-width: 1024px) {
+  /* line 221, ../scss/_grid-mobile.scss */
   .grid {
-    max-width: 1024px;
+    max-width: 1023px;
   }
-  /* line 223, ../scss/_grid-mobile.scss */
+  /* line 226, ../scss/_grid-mobile.scss */
   .grid li {
     width: 33.333333%;
+    float: left;
   }
-  /* line 228, ../scss/_grid-mobile.scss */
+  /* line 231, ../scss/_grid-mobile.scss */
   .grid li .content {
     position: absolute;
-    bottom: 0 !important;
-    top: 0 !important;
-    					/* .date-time
-    					{
-    						position: absolute;
-    						bottom: 1.25em;
-    					}
-    
-    					.cta
-    					{
-    						position: absolute;
-    						bottom: 1.25em;
-    						left: 1em;
-    						right: 1em;	
-    					} */
+    bottom: 0;
+    top: 0;
   }
-  /* line 251, ../scss/_grid-mobile.scss */
+  /* line 238, ../scss/_grid-mobile.scss */
+  .grid li .content .date-time,
+  .grid li .content .cta {
+    position: absolute;
+    bottom: 1.25em;
+  }
+  /* line 244, ../scss/_grid-mobile.scss */
+  .grid li .content .cta {
+    left: 1em;
+    right: 1em;
+  }
+  /* line 253, ../scss/_grid-mobile.scss */
   .grid li figure:after {
     content: ' ';
     position: absolute;
@@ -280,25 +279,25 @@ a:hover {
     right: 0;
     left: 0;
   }
-  /* line 263, ../scss/_grid-mobile.scss */
+  /* line 265, ../scss/_grid-mobile.scss */
   .grid li.double-square {
     width: 66.66666%;
   }
-  /* line 269, ../scss/_grid-mobile.scss */
+  /* line 270, ../scss/_grid-mobile.scss */
   .grid li.double-landscape {
     width: 66.66666%;
   }
-  /* line 273, ../scss/_grid-mobile.scss */
+  /* line 274, ../scss/_grid-mobile.scss */
   .grid li.double-landscape figure {
     width: 50%;
     float: right;
   }
-  /* line 279, ../scss/_grid-mobile.scss */
+  /* line 280, ../scss/_grid-mobile.scss */
   .grid li.double-landscape .content {
     float: left;
     width: 50%;
   }
-  /* line 285, ../scss/_grid-mobile.scss */
+  /* line 286, ../scss/_grid-mobile.scss */
   .grid li.double-landscape .content:after {
     content: ' ';
     border: 12px solid transparent;
@@ -310,7 +309,7 @@ a:hover {
     position: absolute;
     z-index: 1000;
   }
-  /* line 304, ../scss/_grid-mobile.scss */
+  /* line 305, ../scss/_grid-mobile.scss */
   .grid li.double-portrait .content {
     position: relative;
     height: 0;
@@ -318,15 +317,15 @@ a:hover {
     padding-bottom: 100%;
     width: 100%;
   }
-  /* line 312, ../scss/_grid-mobile.scss */
+  /* line 313, ../scss/_grid-mobile.scss */
   .grid li.double-portrait .content .text {
     padding: 1.25em 1em;
   }
-  /* line 317, ../scss/_grid-mobile.scss */
+  /* line 318, ../scss/_grid-mobile.scss */
   .grid li.double-portrait .content .date-time {
     left: 2em;
   }
-  /* line 323, ../scss/_grid-mobile.scss */
+  /* line 324, ../scss/_grid-mobile.scss */
   .grid li.double-portrait .content:before {
     content: ' ';
     border: 12px solid transparent;
@@ -338,7 +337,7 @@ a:hover {
     position: absolute;
     z-index: 1000;
   }
-  /* line 340, ../scss/_grid-mobile.scss */
+  /* line 341, ../scss/_grid-mobile.scss */
   .grid li:hover img {
     transform: scale(1.05);
   }
@@ -627,14 +626,14 @@ body {
 .article .content:after {
   border-top-color: #7fbf42 !important;
 }
-/* line 146, ../scss/baddeo.scss */
+/* line 145, ../scss/baddeo.scss */
 .article:hover {
   /* figure:after, h3, .text
   {
   	opacity: 0;
   } */
 }
-/* line 153, ../scss/baddeo.scss */
+/* line 152, ../scss/baddeo.scss */
 .article:hover img {
   /* Firefox 4+ */
   filter: url("greyscale.svg#greyscale");
@@ -649,16 +648,50 @@ body {
   opacity: 1;
 }
 
-/* line 161, ../scss/baddeo.scss */
+@media (min-width: 1024px) {
+  /* line 164, ../scss/baddeo.scss */
+  .article figure:after, .article h3, .article .text {
+    transition: all ease 0.4s;
+    opacity: 1;
+  }
+  /* line 173, ../scss/baddeo.scss */
+  .article .content a:hover {
+    background: #7fbf42 !important;
+  }
+  /* line 181, ../scss/baddeo.scss */
+  .article figure img {
+    /* Firefox 4+ */
+    filter: url("greyscale.svg#greyscale");
+    /* IE6-9 */
+    filter: gray;
+    /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+    -webkit-filter: grayscale(1) contrast(1.8);
+    -moz-filter: grayscale(1) contrast(1.8);
+    -ms-filter: grayscale(1) contrast(1.8);
+    -o-filter: grayscale(1) contrast(1.8);
+    filter: grayscale(1) contrast(1.8);
+    opacity: 0.6;
+  }
+  /* line 187, ../scss/baddeo.scss */
+  .article figure:after {
+    background: #7fbf42;
+    opacity: 0.8;
+  }
+  /* line 196, ../scss/baddeo.scss */
+  .article:hover figure:after, .article:hover h3, .article:hover .text {
+    opacity: 0;
+  }
+}
+/* line 204, ../scss/baddeo.scss */
 .journal {
   background-color: #ff8036;
   color: white;
 }
-/* line 168, ../scss/baddeo.scss */
+/* line 211, ../scss/baddeo.scss */
 .journal .content:after {
   border-top-color: #ff8036 !important;
 }
-/* line 177, ../scss/baddeo.scss */
+/* line 219, ../scss/baddeo.scss */
 .journal figure img {
   /* Firefox 4+ */
   filter: url("greyscale.svg#greyscale");
@@ -672,13 +705,13 @@ body {
   filter: grayscale(1) contrast(1.8);
   opacity: 0.3;
 }
-/* line 183, ../scss/baddeo.scss */
+/* line 225, ../scss/baddeo.scss */
 .journal figure:after {
   opacity: 0.6;
   background: #ff8036;
 }
 
-/* line 191, ../scss/baddeo.scss */
+/* line 233, ../scss/baddeo.scss */
 .tweet {
   color: #55acee;
 }

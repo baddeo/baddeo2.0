@@ -122,7 +122,6 @@
 
 			&:after
 			{
-				// border-top: $unit*1.5 solid $green !important;
 				border-top-color: $green !important;
 			}
 		}
@@ -157,6 +156,50 @@
 		}
 	} 
 
+	@media (min-width: 1024px)
+	{
+		.article
+		{
+			figure:after, h3, .text
+			{
+				// @extend .animated-fast; // doesn't work within media queries
+				transition: all ease 0.4s;
+				opacity: 1;
+			}
+
+			.content
+			{
+				a:hover
+				{
+					background: $green !important;
+				}
+			}
+
+			figure
+			{ 
+				img
+				{
+					@include cross-browser-grayscale(1, 1.8);
+					opacity: 0.6;
+				}
+
+				&:after 
+				{
+					background: $green; 
+					opacity: 0.8;
+				}
+			}
+
+			&:hover
+			{
+				figure:after, h3, .text
+				{
+					opacity: 0;
+				}
+			}	 
+		}
+	}	
+
 	.journal
 	{
 		background-color: $orange;
@@ -166,7 +209,6 @@
 		{
 			&:after
 			{
-				// border-top: $unit*1.5 solid $orange !important;
 				border-top-color: $orange !important;
 			}
 		}

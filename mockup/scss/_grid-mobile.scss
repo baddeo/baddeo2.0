@@ -136,7 +136,7 @@
 	*/
 
 	// 2 columns
-	@media (min-width: 512px)
+	@media (min-width: 512px) and (max-width: 1023px)
 	{
 		.grid
 		{
@@ -152,9 +152,11 @@
 				.content
 				{
 					font-size: 0.75em;
-					font-size: 3vmin;
-					line-height: 4.5vmin;
-					
+
+					// see http://css-tricks.com/viewport-sized-typography/
+					font-size: 3vw;
+					line-height: 4.5vw;
+
 					position: static;
 
 					.date-time,
@@ -213,24 +215,26 @@
 	
 	// 3 columns
 	// @media (min-width: 768px)
-	@media (min-width: 800px)
+	@media (min-width: 1024px)
 	{
 		.grid
 		{
-			max-width: 1024px;
+			// max-width: 1024px;
+			max-width: 1023px; // cause it's divisible by 3 (341)
 
 			li
 			{
 				width: 33.333333%; 
-				// height: 33.333333%; // do we need this?
+				float: left;
 
 				.content
 				{
 					position: absolute;
-					bottom: 0 !important; // why important?
-					top: 0 !important; // why important?
+					bottom: 0;
+					top: 0;
 
-					/* .date-time
+					.date-time,
+					.cta
 					{
 						position: absolute;
 						bottom: 1.25em;
@@ -238,11 +242,9 @@
 
 					.cta
 					{
-						position: absolute;
-						bottom: 1.25em;
 						left: 1em;
 						right: 1em;	
-					} */
+					} 
 				}
 
 				figure
@@ -262,7 +264,6 @@
 				&.double-square
 				{
 					width: 66.66666%;
-					// height: 66.66666%; // do we need this?
 				}
 
 				&.double-landscape
