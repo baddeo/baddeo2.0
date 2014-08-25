@@ -59,6 +59,7 @@ a:hover {
   position: absolute;
   top: 0;
   z-index: -2;
+  font-size: 1px;
 }
 
 /* COLOUR PHOTO FILTERS */
@@ -162,13 +163,16 @@ a:hover {
 .grid li figure {
   overflow: hidden;
   z-index: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-/* line 86, ../scss/_grid-mobile.scss */
+/* line 90, ../scss/_grid-mobile.scss */
 .grid li figure img {
   width: 100%;
   vertical-align: middle;
 }
-/* line 107, ../scss/_grid-mobile.scss */
+/* line 105, ../scss/_grid-mobile.scss */
 .grid li.filter figure:after {
   content: ' ';
   position: absolute;
@@ -180,41 +184,94 @@ a:hover {
 
 	/* 
 		2 breakpoints
-		768 and 960
-		768 is mainly font-sizes?
+			
+			400 and 800?		
+				or
+			768 and 1024?
+				or
+			512 and 1024?	
+
+			2 columns
+					3 columns
+
 
 		images: 1536x1536 (768@2x)
 		responsive images?
 			could have img-large 1536
 			and img-small (768 or so)
 	*/
-@media (min-width: 768px) {
-  /* line 141, ../scss/_grid-mobile.scss */
-  .grid li {
-    /* 3 columns */
-    width: 33.333333%;
-    height: 33.333333%;
+@media (min-width: 512px) {
+  /* line 147, ../scss/_grid-mobile.scss */
+  .grid li .content,
+  .grid li figure {
+    width: 50%;
     float: left;
   }
-  /* line 149, ../scss/_grid-mobile.scss */
+  /* line 153, ../scss/_grid-mobile.scss */
+  .grid li .content {
+    font-size: 0.75em;
+    font-size: 3vmin;
+    line-height: 4.5vmin;
+    position: static;
+    /* arrow pointing right */
+    /* &:after
+    {
+    	content: ' ';
+    	left: 50%;
+    	top: 45%;
+    	width: 0;
+    	height: 0;
+    	position: absolute;
+    	z-index: 2;
+    	border-width: $unit*1.5;
+    	border-style: solid;
+    	border-color: transparent;
+    	border-left-width: $unit*2;
+    	border-left-color: $bg-color; // default colour
+    } */
+  }
+  /* line 162, ../scss/_grid-mobile.scss */
+  .grid li .content .date-time,
+  .grid li .content .cta {
+    position: absolute;
+    bottom: 1.25em;
+  }
+  /* line 199, ../scss/_grid-mobile.scss */
+  .grid li.double-square .content,
+  .grid li.double-square figure {
+    width: 100%;
+    float: none;
+  }
+}
+@media (min-width: 800px) {
+  /* line 219, ../scss/_grid-mobile.scss */
+  .grid {
+    max-width: 1024px;
+  }
+  /* line 223, ../scss/_grid-mobile.scss */
+  .grid li {
+    width: 33.333333%;
+  }
+  /* line 228, ../scss/_grid-mobile.scss */
   .grid li .content {
     position: absolute;
     bottom: 0 !important;
     top: 0 !important;
+    					/* .date-time
+    					{
+    						position: absolute;
+    						bottom: 1.25em;
+    					}
+    
+    					.cta
+    					{
+    						position: absolute;
+    						bottom: 1.25em;
+    						left: 1em;
+    						right: 1em;	
+    					} */
   }
-  /* line 155, ../scss/_grid-mobile.scss */
-  .grid li .content .date-time {
-    position: absolute;
-    bottom: 1.25em;
-  }
-  /* line 161, ../scss/_grid-mobile.scss */
-  .grid li .content .cta {
-    position: absolute;
-    bottom: 1.25em;
-    left: 1em;
-    right: 1em;
-  }
-  /* line 172, ../scss/_grid-mobile.scss */
+  /* line 251, ../scss/_grid-mobile.scss */
   .grid li figure:after {
     content: ' ';
     position: absolute;
@@ -223,26 +280,25 @@ a:hover {
     right: 0;
     left: 0;
   }
-  /* line 184, ../scss/_grid-mobile.scss */
+  /* line 263, ../scss/_grid-mobile.scss */
   .grid li.double-square {
     width: 66.66666%;
-    height: 66.66666%;
   }
-  /* line 190, ../scss/_grid-mobile.scss */
+  /* line 269, ../scss/_grid-mobile.scss */
   .grid li.double-landscape {
     width: 66.66666%;
   }
-  /* line 194, ../scss/_grid-mobile.scss */
+  /* line 273, ../scss/_grid-mobile.scss */
   .grid li.double-landscape figure {
     width: 50%;
     float: right;
   }
-  /* line 200, ../scss/_grid-mobile.scss */
+  /* line 279, ../scss/_grid-mobile.scss */
   .grid li.double-landscape .content {
     float: left;
     width: 50%;
   }
-  /* line 206, ../scss/_grid-mobile.scss */
+  /* line 285, ../scss/_grid-mobile.scss */
   .grid li.double-landscape .content:after {
     content: ' ';
     border: 12px solid transparent;
@@ -254,7 +310,7 @@ a:hover {
     position: absolute;
     z-index: 1000;
   }
-  /* line 225, ../scss/_grid-mobile.scss */
+  /* line 304, ../scss/_grid-mobile.scss */
   .grid li.double-portrait .content {
     position: relative;
     height: 0;
@@ -262,15 +318,15 @@ a:hover {
     padding-bottom: 100%;
     width: 100%;
   }
-  /* line 233, ../scss/_grid-mobile.scss */
+  /* line 312, ../scss/_grid-mobile.scss */
   .grid li.double-portrait .content .text {
     padding: 1.25em 1em;
   }
-  /* line 238, ../scss/_grid-mobile.scss */
+  /* line 317, ../scss/_grid-mobile.scss */
   .grid li.double-portrait .content .date-time {
     left: 2em;
   }
-  /* line 244, ../scss/_grid-mobile.scss */
+  /* line 323, ../scss/_grid-mobile.scss */
   .grid li.double-portrait .content:before {
     content: ' ';
     border: 12px solid transparent;
@@ -282,17 +338,20 @@ a:hover {
     position: absolute;
     z-index: 1000;
   }
-  /* line 261, ../scss/_grid-mobile.scss */
+  /* line 340, ../scss/_grid-mobile.scss */
   .grid li:hover img {
     transform: scale(1.05);
   }
 }
-@media (min-width: 960px) {
-  /* line 275, ../scss/_grid-mobile.scss */
-  .grid {
-    max-width: 960px;
-  }
-}
+/* 
+	@media (min-width: 1024px)
+	{
+		.grid
+		{	
+			max-width: 1024px;
+		}	
+	} 
+*/
 /* line 2, ../scss/_nav.scss */
 nav {
   display: none;
@@ -516,14 +575,15 @@ body {
   bottom: 0;
   padding-top: 42%;
   color: white;
+  opacity: 0.6;
   pointer-events: none;
 }
 
-/* line 72, ../scss/baddeo.scss */
+/* line 73, ../scss/baddeo.scss */
 .about {
   background: #52283b;
 }
-/* line 83, ../scss/baddeo.scss */
+/* line 84, ../scss/baddeo.scss */
 .about figure img {
   /* Firefox 4+ */
   filter: url("greyscale.svg#greyscale");
@@ -536,12 +596,12 @@ body {
   -o-filter: grayscale(1) contrast(1.8);
   filter: grayscale(1) contrast(1.8);
 }
-/* line 88, ../scss/baddeo.scss */
+/* line 89, ../scss/baddeo.scss */
 .about figure:after {
   background: #52283b;
   opacity: 0.8;
 }
-/* line 97, ../scss/baddeo.scss */
+/* line 98, ../scss/baddeo.scss */
 .about:hover img {
   /* Firefox 4+ */
   filter: url("greyscale.svg#greyscale");
@@ -554,27 +614,27 @@ body {
   -o-filter: grayscale(0) contrast(1);
   filter: grayscale(0) contrast(1);
 }
-/* line 102, ../scss/baddeo.scss */
+/* line 103, ../scss/baddeo.scss */
 .about:hover figure:after {
   opacity: 0;
 }
 
-/* line 109, ../scss/baddeo.scss */
+/* line 110, ../scss/baddeo.scss */
 .article {
   background-color: #7fbf42;
 }
-/* line 123, ../scss/baddeo.scss */
+/* line 124, ../scss/baddeo.scss */
 .article .content:after {
   border-top-color: #7fbf42 !important;
 }
-/* line 145, ../scss/baddeo.scss */
+/* line 146, ../scss/baddeo.scss */
 .article:hover {
   /* figure:after, h3, .text
   {
   	opacity: 0;
   } */
 }
-/* line 152, ../scss/baddeo.scss */
+/* line 153, ../scss/baddeo.scss */
 .article:hover img {
   /* Firefox 4+ */
   filter: url("greyscale.svg#greyscale");
@@ -589,16 +649,16 @@ body {
   opacity: 1;
 }
 
-/* line 160, ../scss/baddeo.scss */
+/* line 161, ../scss/baddeo.scss */
 .journal {
   background-color: #ff8036;
   color: white;
 }
-/* line 167, ../scss/baddeo.scss */
+/* line 168, ../scss/baddeo.scss */
 .journal .content:after {
   border-top-color: #ff8036 !important;
 }
-/* line 176, ../scss/baddeo.scss */
+/* line 177, ../scss/baddeo.scss */
 .journal figure img {
   /* Firefox 4+ */
   filter: url("greyscale.svg#greyscale");
@@ -612,13 +672,13 @@ body {
   filter: grayscale(1) contrast(1.8);
   opacity: 0.3;
 }
-/* line 182, ../scss/baddeo.scss */
+/* line 183, ../scss/baddeo.scss */
 .journal figure:after {
   opacity: 0.6;
   background: #ff8036;
 }
 
-/* line 190, ../scss/baddeo.scss */
+/* line 191, ../scss/baddeo.scss */
 .tweet {
   color: #55acee;
 }
