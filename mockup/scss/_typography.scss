@@ -5,10 +5,8 @@
 body
 {
 	font-family: 'Caecilia', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: $unit*1.5;
 	font-weight: 100;
-	letter-spacing: -0.02em;
-	line-height: 1.4;
+	// letter-spacing: -0.02em;
 }
 
 h1,
@@ -20,11 +18,13 @@ h6
 {
 	font-family: 'MuseoSans100', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	line-height: 1.1em;
-	letter-spacing: 0.02em;
+	// letter-spacing: 0.02em;
 	text-transform: uppercase;
+	font-weight: normal;
+	text-rendering: optimizeLegibility;
 }
 
-b, strong, .bold 
+b, strong, .bold, .cta a 
 {
 	font-family: 'MuseoSans700', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -42,11 +42,14 @@ div.info
 }
 
 // from http://www.gridlover.net/app/
+// scale factor 1.618 (golden ratio)
 
 	body 
 	{
-	  font-size: 1.125em;
-	  line-height: 1.5em;
+		font-size: $unit*1.5; // 18px
+		// line-height: 1.4;
+	  	// font-size: 1.125em;
+	  	line-height: 1.5em;
 	}
 
 	h1 
